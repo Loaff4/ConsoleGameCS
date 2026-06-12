@@ -1,0 +1,14 @@
+/home/cole/Projects/C# Projects/ConsoleGame/bin/Debug/net10.0/ConsoleGame
+/home/cole/Projects/C# Projects/ConsoleGame/bin/Debug/net10.0/ConsoleGame.deps.json
+/home/cole/Projects/C# Projects/ConsoleGame/bin/Debug/net10.0/ConsoleGame.runtimeconfig.json
+/home/cole/Projects/C# Projects/ConsoleGame/bin/Debug/net10.0/ConsoleGame.dll
+/home/cole/Projects/C# Projects/ConsoleGame/bin/Debug/net10.0/ConsoleGame.pdb
+/home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ConsoleGame.GeneratedMSBuildEditorConfig.editorconfig
+/home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ConsoleGame.AssemblyInfoInputs.cache
+/home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ConsoleGame.AssemblyInfo.cs
+/home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ConsoleGame.csproj.CoreCompileInputs.cache
+/home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ConsoleGame.dll
+/home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/refint/ConsoleGame.dll
+/home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ConsoleGame.pdb
+/home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ConsoleGame.genruntimeconfig.cache
+/home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ref/ConsoleGame.dll

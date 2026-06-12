@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "/5NE+qdyZmU=",
+  "success": true,
+  "projectFilePath": "/home/cole/Projects/C# Projects/ConsoleGame/ConsoleGame.csproj",
+  "expectedPackageFiles": [
+    "/home/cole/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.4/microsoft.aspnetcore.app.ref.10.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
