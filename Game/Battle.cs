@@ -12,6 +12,7 @@ public class Battle
     {
         Participants = startingParticipants;
     }
+
     
 
     public void EndTurn()

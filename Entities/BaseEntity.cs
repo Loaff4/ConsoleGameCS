@@ -13,7 +13,7 @@ public abstract class BaseEntity
     public float Strength; //The base damage this entity deals with attacks
     public float Lethality; //How likely this entity is to deal critical damage when holding a weapon
 
-    public List<BaseEntity> Attackers; //Which entity has attacked it this turn
+    public List<BaseEntity> Attackers = new(); //Which entity has attacked it this turn
     public List<BaseEffect> CurrentEffects; 
     public string Name = "nameless entity";
     public List<BaseItem> InventoryItems = new(); 
@@ -36,28 +36,47 @@ public abstract class BaseEntity
         
 
         float dmgAmt = Strength;
+        
+        
+    
 
         float bonusDamage = 0;
         if (EquippedTool is Weapon weapon) {
-            
+
             float randFloat = (float)Random.Shared.NextDouble()*100;
             if (randFloat < Lethality) {
                 bonusDamage = weapon.GetCritDamage();
             } else {
                 bonusDamage += weapon.AttackDamage;
             }
+
+
+            weapon.Decay(1);
+
+            dmgAmt += bonusDamage;
+            dmgAmt *= miscMultiplier;
+
+            float healAmt = dmgAmt*weapon.Lifesteal*0.01f; //100 Lifesteal means heal for the same amount as dmg dealt
+
+            Heal(healAmt);
+
+
+        }
+        else
+        {
+            dmgAmt += bonusDamage;
+            dmgAmt *= miscMultiplier;
         }
 
         
-
-        dmgAmt += bonusDamage;
-        dmgAmt *= miscMultiplier;
-
         DamageData dmg = new DamageData
         {
             DamageAmount = dmgAmt,
             DamageSource = this
         };
+        
+
+        
 
         Console.WriteLine($"{Name} is attacking {targetEntity.Name}");
         targetEntity.OnAttacked(this, dmg, trueAttack);
@@ -82,7 +101,7 @@ public abstract class BaseEntity
         dmgAmt /= Sheild*0.01f+1; //Each magnitude of 100 is: 1/2, 1/3, 1/4, etc...
 
         //Try to dodge the attack (take no damage)
-        float randFloat = (float)Random.Shared.NextDouble() * 100; 
+        float randFloat = (float)Random.Shared.NextDouble() * 100;
         if (randFloat < DodgeChance) {
             Console.WriteLine($"{Name} has dodged {attacker.Name}'s attack");
             dmgAmt = 0;
@@ -98,6 +117,11 @@ public abstract class BaseEntity
     }
     public void Heal(float healAmt) 
     {
+        if (healAmt + CurrentHealth > MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+            return;
+        }
         CurrentHealth += healAmt;
         Console.WriteLine($"{Name} has healed by {healAmt} health points");
     }

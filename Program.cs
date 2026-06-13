@@ -16,14 +16,16 @@ class Program {
             {
                 Name = "Wooden Sword",
                 Value = 30,
-                AttackDamage = 15,
-                CriticalFactor = 45,
+                AttackDamage = 10,
+                CriticalFactor = 0,
+                Lifesteal = 20,
                 MaxDurability = 50,
                 Level = 100
             }
         ));
-        entities[0].Lethality = 0;
 
+        entities[0].Lethality = 100;
+        entities[1].Attack(entities[0]);
         entities[0].Attack(entities[1]);
         foreach (KeyValuePair<int, BaseEntity> pair in entities)
         {

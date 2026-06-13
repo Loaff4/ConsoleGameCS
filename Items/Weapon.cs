@@ -16,7 +16,7 @@ class Weapon : BaseTool
 
     public Weapon(WeaponData data) : base (data.Level, data.MaxDurability, data.Value, data.Name)
     {
-        AttackDamage = data.AttackDamage * (Level*0.01f+1);
+        AttackDamage = data.AttackDamage * (Level*0.01f+1); //Level 100 doubles dmg, Level 200 triples dmg, etc...
         CriticalFactor = data.CriticalFactor;
         Lifesteal = data.Lifesteal;
     }
