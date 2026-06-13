@@ -1,6 +1,7 @@
 ﻿using System;
 using Entities;
 using Items;
+using Items.Data;
 namespace Main;
 
 class Program {
@@ -18,10 +19,10 @@ class Program {
                 AttackDamage = 15,
                 CriticalFactor = 45,
                 MaxDurability = 50,
-                Level = 1
+                Level = 100
             }
         ));
-        entities[0].lethality = 45;
+        entities[0].Lethality = 0;
 
         entities[0].Attack(entities[1]);
         foreach (KeyValuePair<int, BaseEntity> pair in entities)

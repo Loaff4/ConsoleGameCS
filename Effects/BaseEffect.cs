@@ -1,17 +1,23 @@
 using System;
+using Effects.Data;
+using Entities;
 namespace Effects;
 
-abstract class BaseEffect
+public abstract class BaseEffect
 {
-    int Duration;
+    public int Duration;
 
     //How strong is the effect
-    int Potency;
+    public float Potency;
 
-    public BaseEffect(int startingDuration, int potency)
+    //Who is this effect applied to
+    public BaseEntity Owner;
+
+    public BaseEffect(EffectData effectData, BaseEntity owner)
     {
-        Duration = startingDuration;
-        Potency = potency;
+        Duration = effectData.Duration;
+        Potency = effectData.Potency * 5;
+        Owner = owner;
     }
 
 

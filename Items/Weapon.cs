@@ -1,4 +1,5 @@
 using System;
+using Items.Data;
 namespace Items;
 
 class Weapon : BaseTool
@@ -15,7 +16,7 @@ class Weapon : BaseTool
 
     public Weapon(WeaponData data) : base (data.Level, data.MaxDurability, data.Value, data.Name)
     {
-        AttackDamage = data.AttackDamage;
+        AttackDamage = data.AttackDamage * (Level*0.01f+1);
         CriticalFactor = data.CriticalFactor;
         Lifesteal = data.Lifesteal;
     }

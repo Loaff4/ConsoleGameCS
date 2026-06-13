@@ -12,3 +12,4 @@
 /home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ConsoleGame.pdb
 /home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ConsoleGame.genruntimeconfig.cache
 /home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ref/ConsoleGame.dll
+/home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ConsoleGame.sourcelink.json

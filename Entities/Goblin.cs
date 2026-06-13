@@ -22,7 +22,7 @@ class Goblin : BaseEntity
 
     /*
     Deal damage back to an attacker. 
-    I'll probably think of a better "non-lazy" way to not have this a feedback loop other than making it a trueAttack but not right now
+    I'll probably think of a better "non-lazy" way to not make this a feedback loop other than making it a trueAttack but not right now
     (trueAttacks don't trigger retaliate)
     */
     public void Retaliate(BaseEntity attacker)

@@ -1,4 +1,4 @@
-namespace Items;
+namespace Items.Data;
 
 public struct WeaponData
 {

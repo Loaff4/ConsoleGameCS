@@ -1,22 +1,25 @@
 using System;
+using Effects;
 using Entities.Data;
 using Items;
 namespace Entities;
 
-abstract class BaseEntity
+public abstract class BaseEntity
 {
     public float MaxHealth = 200; 
-    public float CurrentHealth; 
-    public float DodgeFactor; //How likely this creature is to dodge
+    public float CurrentHealth;
+    public float DodgeChance; //How likely this entity is to dodge
     public float Sheild; //How much damage is reduced (dmg = Shield*0.01+1)
-    public float Strength; //The base damage this creature deals with attacks
-    public float lethality; //How likely this creature is to deal critical damage when holding a weapon
+    public float Strength; //The base damage this entity deals with attacks
+    public float Lethality; //How likely this entity is to deal critical damage when holding a weapon
+
+    public List<BaseEntity> Attackers; //Which entity has attacked it this turn
+    public List<BaseEffect> CurrentEffects; 
     public string Name = "nameless entity";
     public List<BaseItem> InventoryItems = new(); 
     public int CoinBalance = 0;
-
     public BaseTool EquippedTool;
-    public int id; //This will be used to find the creature in lists (not using Name since those can have duplicates)
+    public int id; //This will be used to find the entity in lists (not using Name since those can have duplicates)
 
     public BaseEntity(float startingHealth, float startingStrength, string name) 
     {
@@ -37,9 +40,8 @@ abstract class BaseEntity
         float bonusDamage = 0;
         if (EquippedTool is Weapon weapon) {
             
-            Random random = new();
-            float randFloat = (float)random.NextDouble() * lethality;
-            if (randFloat>=25) {
+            float randFloat = (float)Random.Shared.NextDouble()*100;
+            if (randFloat < Lethality) {
                 bonusDamage = weapon.GetCritDamage();
             } else {
                 bonusDamage += weapon.AttackDamage;
@@ -65,6 +67,9 @@ abstract class BaseEntity
     //Calculate dodging and damage reduction
     public virtual void OnAttacked(BaseEntity attacker, DamageData dmg, bool trueAttack) {
         
+
+        Attackers.Add(attacker);
+
         float dmgAmt = dmg.DamageAmount;
 
         //True attacks bypass all dodging and dmg reduction
@@ -77,9 +82,8 @@ abstract class BaseEntity
         dmgAmt /= Sheild*0.01f+1; //Each magnitude of 100 is: 1/2, 1/3, 1/4, etc...
 
         //Try to dodge the attack (take no damage)
-        Random random = new();
-        float randFloat = (float)random.NextDouble() * DodgeFactor; //Higher DodgeFactor means more chance to dodge
-        if (randFloat>=25) {
+        float randFloat = (float)Random.Shared.NextDouble() * 100; 
+        if (randFloat < DodgeChance) {
             Console.WriteLine($"{Name} has dodged {attacker.Name}'s attack");
             dmgAmt = 0;
         }
@@ -88,7 +92,6 @@ abstract class BaseEntity
         {
             DamageAmount = dmgAmt,
             DamageSource = attacker
-
         };
 
         TakeDamage(newDmg);
@@ -120,5 +123,18 @@ abstract class BaseEntity
     //Equip a tool for use such as a weapon so it can be used in combat or for whatever else
     public void Equip(BaseTool tool) {
         EquippedTool = tool;
+    }
+
+    public void GainEffect(BaseEffect effect)
+    {
+        CurrentEffects.Add(effect);
+    }
+
+    public void TickEffects()
+    {
+        foreach (BaseEffect effect in CurrentEffects)
+        {
+            effect.Tick();       
+        }
     }
 }

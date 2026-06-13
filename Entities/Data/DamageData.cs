@@ -3,7 +3,7 @@ using Items;
 
 namespace Entities.Data;
 
-struct DamageData
+public struct DamageData
 {
     public float DamageAmount;
     public object DamageSource;
