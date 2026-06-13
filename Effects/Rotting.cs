@@ -10,7 +10,7 @@ class Rotting : BaseEffect
 
     Rotting(EffectData effectData, BaseEntity owner) : base(effectData, owner)
     {
-        
+        Name = "Rotting";
     }
 
     public override void Tick()

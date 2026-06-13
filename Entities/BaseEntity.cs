@@ -1,4 +1,5 @@
 using System;
+using System.Reflection.Metadata;
 using Effects;
 using Entities.Data;
 using Items;
@@ -14,12 +15,14 @@ public abstract class BaseEntity
     public float Lethality; //How likely this entity is to deal critical damage when holding a weapon
 
     public List<BaseEntity> Attackers = new(); //Which entity has attacked it this turn
-    public List<BaseEffect> CurrentEffects; 
+    public List<BaseEffect> CurrentEffects = new(); 
     public string Name = "nameless entity";
     public List<BaseItem> InventoryItems = new(); 
     public int CoinBalance = 0;
     public BaseTool EquippedTool;
     public int id; //This will be used to find the entity in lists (not using Name since those can have duplicates)
+
+    public static EmptyEntity empty = new EmptyEntity();
 
     public BaseEntity(float startingHealth, float startingStrength, string name) 
     {
@@ -37,8 +40,6 @@ public abstract class BaseEntity
 
         float dmgAmt = Strength;
         
-        
-    
 
         float bonusDamage = 0;
         if (EquippedTool is Weapon weapon) {
@@ -50,7 +51,7 @@ public abstract class BaseEntity
                 bonusDamage += weapon.AttackDamage;
             }
 
-
+            weapon.OnAttack(targetEntity);
             weapon.Decay(1);
 
             dmgAmt += bonusDamage;
@@ -59,8 +60,6 @@ public abstract class BaseEntity
             float healAmt = dmgAmt*weapon.Lifesteal*0.01f; //100 Lifesteal means heal for the same amount as dmg dealt
 
             Heal(healAmt);
-
-
         }
         else
         {

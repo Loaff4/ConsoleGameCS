@@ -1,4 +1,6 @@
 ﻿using System;
+using Effects;
+using Effects.Data;
 using Entities;
 using Items;
 using Items.Data;
@@ -20,7 +22,11 @@ class Program {
                 CriticalFactor = 0,
                 Lifesteal = 20,
                 MaxDurability = 50,
-                Level = 100
+                Level = 100,
+                OnAttack = (new Action<BaseEntity>((BaseEntity target) =>
+                {
+                    target.GainEffect(new Poison(new EffectData {Duration = 3, Potency = 4}, target));
+                }))
             }
         ));
 
@@ -29,7 +35,14 @@ class Program {
         entities[0].Attack(entities[1]);
         foreach (KeyValuePair<int, BaseEntity> pair in entities)
         {
+            BaseEntity entity = pair.Value;
             Console.WriteLine($"{pair.Value.Name} has {pair.Value.CurrentHealth} health");
+
+            foreach (BaseEffect effect in entity.CurrentEffects)
+            {
+                Console.WriteLine($"{entity.Name} has the effect: {effect.Name}");
+            }
+            
         }
 
 

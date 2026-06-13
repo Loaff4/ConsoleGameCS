@@ -1,3 +1,5 @@
+using Entities;
+
 namespace Items.Data;
 
 public struct WeaponData
@@ -10,4 +12,5 @@ public struct WeaponData
     public float CurrentDurability;
     public float CriticalFactor;
     public float Lifesteal;
+    public Action<BaseEntity> OnAttack;
 }

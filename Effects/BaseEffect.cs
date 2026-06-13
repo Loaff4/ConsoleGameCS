@@ -13,6 +13,8 @@ public abstract class BaseEffect
     //Who is this effect applied to
     public BaseEntity Owner;
 
+    public string Name;
+
     public BaseEffect(EffectData effectData, BaseEntity owner)
     {
         Duration = effectData.Duration;

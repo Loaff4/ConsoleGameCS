@@ -5,12 +5,14 @@ using Entities.Data;
 
 namespace Effects;
 
-class Poison : BaseEffect
+public class Poison : BaseEffect
 {
 
+    
+    
     public Poison(EffectData effectData, BaseEntity owner) : base(effectData, owner)
     {
-        
+        Name = "Poison";
     }
 
     public override void Tick()

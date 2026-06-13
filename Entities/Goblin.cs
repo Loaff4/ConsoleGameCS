@@ -13,10 +13,7 @@ class Goblin : BaseEntity
     public override void OnAttacked(BaseEntity attacker, DamageData dmg, bool trueAttack)
     {
         base.OnAttacked(attacker, dmg, trueAttack);
-        if (!trueAttack)
-        {
-            Retaliate(attacker);
-        }
+        Retaliate(attacker, dmg);
         
     }
 
@@ -25,10 +22,11 @@ class Goblin : BaseEntity
     I'll probably think of a better "non-lazy" way to not make this a feedback loop other than making it a trueAttack but not right now
     (trueAttacks don't trigger retaliate)
     */
-    public void Retaliate(BaseEntity attacker)
+    public void Retaliate(BaseEntity attacker, DamageData dmg)
     {
         Console.WriteLine($"{Name} retaliated against {attacker.Name}");
-        Attack(attacker, 0.1f, true);
+        DamageData retaliateDmg = new DamageData {DamageAmount = dmg.DamageAmount*0.1f, DamageSource = this};
+        attacker.TakeDamage(retaliateDmg);
     }
 
     
