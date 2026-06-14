@@ -36,13 +36,13 @@ class Program {
         foreach (KeyValuePair<int, BaseEntity> pair in entities)
         {
             BaseEntity entity = pair.Value;
-            Console.WriteLine($"{pair.Value.Name} has {pair.Value.CurrentHealth} health");
 
             foreach (BaseEffect effect in entity.CurrentEffects)
             {
                 Console.WriteLine($"{entity.Name} has the effect: {effect.Name}");
             }
-            
+            entity.TickEffects();
+            Console.WriteLine($"{pair.Value.Name} has {pair.Value.CurrentHealth} health");
         }
 
 

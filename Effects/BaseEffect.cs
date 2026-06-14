@@ -18,7 +18,7 @@ public abstract class BaseEffect
     public BaseEffect(EffectData effectData, BaseEntity owner)
     {
         Duration = effectData.Duration;
-        Potency = effectData.Potency * 5;
+        Potency = effectData.Potency;
         Owner = owner;
     }
 

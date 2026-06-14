@@ -17,10 +17,12 @@ public class Poison : BaseEffect
 
     public override void Tick()
     {
+        Console.WriteLine($"{Owner.Name} was hurt by {Name}\n");
         Owner.TakeDamage(new DamageData
         {
             DamageAmount = Potency * 5,
             DamageSource = this
         });
+        
     }
 }

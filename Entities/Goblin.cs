@@ -17,14 +17,10 @@ class Goblin : BaseEntity
         
     }
 
-    /*
-    Deal damage back to an attacker. 
-    I'll probably think of a better "non-lazy" way to not make this a feedback loop other than making it a trueAttack but not right now
-    (trueAttacks don't trigger retaliate)
-    */
+    //Attacker takes damage from this entity proportional to damage dealt to this entity 
     public void Retaliate(BaseEntity attacker, DamageData dmg)
     {
-        Console.WriteLine($"{Name} retaliated against {attacker.Name}");
+        Console.WriteLine($"{Name} retaliated against {attacker.Name}\n");
         DamageData retaliateDmg = new DamageData {DamageAmount = dmg.DamageAmount*0.1f, DamageSource = this};
         attacker.TakeDamage(retaliateDmg);
     }

@@ -1,11 +1,13 @@
 using System;
 using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
 using Effects;
 using Entities.Data;
 using Items;
+using Items.Utilities;
 namespace Entities;
 
-public abstract class BaseEntity
+public abstract class BaseEntity : IItemOwner
 {
     public float MaxHealth = 200; 
     public float CurrentHealth;
@@ -24,6 +26,8 @@ public abstract class BaseEntity
 
     public static EmptyEntity empty = new EmptyEntity();
 
+    List<BaseItem> IItemOwner.InventoryItems {get {return InventoryItems;} set {InventoryItems = value;}}
+
     public BaseEntity(float startingHealth, float startingStrength, string name) 
     {
         MaxHealth = startingHealth;
@@ -39,7 +43,6 @@ public abstract class BaseEntity
         
 
         float dmgAmt = Strength;
-        
 
         float bonusDamage = 0;
         if (EquippedTool is Weapon weapon) {
@@ -77,7 +80,7 @@ public abstract class BaseEntity
 
         
 
-        Console.WriteLine($"{Name} is attacking {targetEntity.Name}");
+        Console.WriteLine($"{Name} is attacking {targetEntity.Name}\n");
         targetEntity.OnAttacked(this, dmg, trueAttack);
     }
    
@@ -102,7 +105,7 @@ public abstract class BaseEntity
         //Try to dodge the attack (take no damage)
         float randFloat = (float)Random.Shared.NextDouble() * 100;
         if (randFloat < DodgeChance) {
-            Console.WriteLine($"{Name} has dodged {attacker.Name}'s attack");
+            Console.WriteLine($"{Name} has dodged {attacker.Name}'s attack\n");
             dmgAmt = 0;
         }
         
@@ -122,7 +125,7 @@ public abstract class BaseEntity
             return;
         }
         CurrentHealth += healAmt;
-        Console.WriteLine($"{Name} has healed by {healAmt} health points");
+        Console.WriteLine($"{Name} has healed by {healAmt} health points\n");
     }
 
 
@@ -133,8 +136,9 @@ public abstract class BaseEntity
 
         if (dmgAmt <= 0) return; //Don't print or do anything if the dmg is 0 or less since that's redundant
         CurrentHealth -= dmgAmt;
-        Console.WriteLine($"{Name} has taken {dmgAmt} damage");
+        Console.WriteLine($"{Name} has taken {dmgAmt} damage\n");
     }
+
 
     //Sell an item to any particular shop (might put this under the BaseItem class idk yet)
     public void SellItem(BaseItem item) {
@@ -143,7 +147,6 @@ public abstract class BaseEntity
     }
 
 
-    //Equip a tool for use such as a weapon so it can be used in combat or for whatever else
     public void Equip(BaseTool tool) {
         EquippedTool = tool;
     }
@@ -159,5 +162,10 @@ public abstract class BaseEntity
         {
             effect.Tick();       
         }
+    }
+
+    public void DeleteItem(BaseItem item)
+    {
+        InventoryItems.Remove(item);
     }
 }
