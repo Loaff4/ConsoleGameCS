@@ -1,6 +1,7 @@
 using System;
 using Entities;
 using Items.Data;
+using Items.Interfaces;
 namespace Items;
 
 public class Weapon : BaseTool
@@ -14,15 +15,15 @@ public class Weapon : BaseTool
     //How much damage is returned to the user as healing
     public float Lifesteal;
 
-    public Action<BaseEntity, Weapon> OnAttack;
+    public Action<IItemOwner, BaseEntity, BaseTool> OnAttack;
 
 
-    public Weapon(WeaponData data) : base (data.Level, data.MaxDurability, data.Value, data.Name)
+    public Weapon(ToolData data) : base (data)
     {
-        AttackDamage = data.AttackDamage * (Level*0.01f+1); //Level 100 doubles dmg, Level 200 triples dmg, etc...
+        AttackDamage = data.AttackDamage + (data.AttackDamage*Level*0.01f); //Level 100 doubles dmg, Level 200 triples dmg, etc...
         CriticalFactor = data.CriticalFactor;
         Lifesteal = data.Lifesteal;
-        OnAttack = data.OnAttack ?? new Action<BaseEntity, Weapon>((BaseEntity target, Weapon thisWeapon) => {});
+        OnAttack = data.OnAttack ?? new Action<IItemOwner, BaseEntity, BaseTool>((IItemOwner owner, BaseEntity target, BaseTool thisWeapon) => {});
     }
 
     

@@ -4,11 +4,14 @@ using System.Reflection.Metadata.Ecma335;
 using Effects;
 using Entities.Data;
 using Items;
-using Items.Utilities;
+using Items.Interfaces;
+using Utilities;
 namespace Entities;
 
 public abstract class BaseEntity : IItemOwner
 {
+
+    public float Level;
     public float MaxHealth = 200; 
     public float CurrentHealth;
     public float DodgeChance; //How likely this entity is to dodge
@@ -28,12 +31,14 @@ public abstract class BaseEntity : IItemOwner
 
     List<BaseItem> IItemOwner.InventoryItems {get {return InventoryItems;} set {InventoryItems = value;}}
 
-    public BaseEntity(float startingHealth, float startingStrength, string name) 
+    public BaseEntity(EntityData data) 
     {
-        MaxHealth = startingHealth;
+        Level = data.Level;
+        MaxHealth = MathUtil.Scale(data.Health, Level);
         CurrentHealth = MaxHealth;
-        Strength = startingStrength;
-        Name = name;
+        Strength = MathUtil.Scale(data.Strength, Level);
+        Name = data.Name;
+        
     }
 
 
@@ -46,7 +51,6 @@ public abstract class BaseEntity : IItemOwner
 
         float bonusDamage = 0;
         if (EquippedTool is Weapon weapon) {
-
             float randFloat = (float)Random.Shared.NextDouble()*100;
             if (randFloat < Lethality) {
                 bonusDamage = weapon.GetCritDamage();
@@ -54,7 +58,7 @@ public abstract class BaseEntity : IItemOwner
                 bonusDamage += weapon.AttackDamage;
             }
 
-            weapon.OnAttack(targetEntity, weapon);
+            weapon.OnAttack(this, targetEntity, weapon);
             weapon.Decay(1);
 
             dmgAmt += bonusDamage;

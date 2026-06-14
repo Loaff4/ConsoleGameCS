@@ -1,16 +1,16 @@
 using Entities;
+using Items.Interfaces;
 
 namespace Items.Data;
 
-public struct WeaponData
+public struct ToolData
 {
     public string Name;
     public int Value;
-    public int Level;
+    public float Level;
     public int AttackDamage;
-    public float MaxDurability;
-    public float CurrentDurability;
+    public float Durability;
     public float CriticalFactor;
     public float Lifesteal;
-    public Action<BaseEntity, Weapon> OnAttack;
+    public Action<IItemOwner, BaseEntity, BaseTool> OnAttack;
 }

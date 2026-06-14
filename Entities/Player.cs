@@ -1,9 +1,10 @@
 using System;
+using Entities.Data;
 namespace Entities;
 
 class Player : BaseEntity
 {
-    public Player(float startingHealth, float startingStrength, string name) : base(startingHealth, startingStrength, name)
+    public Player(EntityData data) : base(data)
     {
         
     }

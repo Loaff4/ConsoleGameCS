@@ -1,4 +1,4 @@
-namespace Items.Utilities;
+namespace Items.Interfaces;
 
 public interface IItemOwner
 {

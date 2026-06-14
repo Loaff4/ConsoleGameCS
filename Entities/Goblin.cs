@@ -4,7 +4,7 @@ namespace Entities;
 
 class Goblin : BaseEntity
 {
-    public Goblin(float startingHealth, float startingStrength, string name) : base(startingHealth, startingStrength, name)
+    public Goblin(EntityData data) : base(data)
     {
         
     }

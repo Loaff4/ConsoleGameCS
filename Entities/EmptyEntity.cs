@@ -1,8 +1,10 @@
+using Entities.Data;
+
 namespace Entities;
 
 public class EmptyEntity : BaseEntity
 {
-    public EmptyEntity() : base(0, 0, "EMPTYENTITY")
+    public EmptyEntity() : base(EntityData.empty)
     {
     }
 }
