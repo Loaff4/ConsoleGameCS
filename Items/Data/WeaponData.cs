@@ -12,5 +12,5 @@ public struct WeaponData
     public float CurrentDurability;
     public float CriticalFactor;
     public float Lifesteal;
-    public Action<BaseEntity> OnAttack;
+    public Action<BaseEntity, Weapon> OnAttack;
 }

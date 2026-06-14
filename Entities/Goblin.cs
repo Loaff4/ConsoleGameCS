@@ -14,7 +14,6 @@ class Goblin : BaseEntity
     {
         base.OnAttacked(attacker, dmg, trueAttack);
         Retaliate(attacker, dmg);
-        
     }
 
     //Attacker takes damage from this entity proportional to damage dealt to this entity 

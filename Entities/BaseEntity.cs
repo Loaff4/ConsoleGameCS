@@ -54,7 +54,7 @@ public abstract class BaseEntity : IItemOwner
                 bonusDamage += weapon.AttackDamage;
             }
 
-            weapon.OnAttack(targetEntity);
+            weapon.OnAttack(targetEntity, weapon);
             weapon.Decay(1);
 
             dmgAmt += bonusDamage;
