@@ -7,7 +7,7 @@ class GatheringPoi : BasePoi
 {
     public BaseEntity[] GatheredEntites;
     public float DangerLevel;
-    GatheringPoi(GatheringData data, string name) : base(name)
+    public GatheringPoi(GatheringData data) : base(data.Name)
     {
         GatheredEntites = data.GatheredEntities;
         DangerLevel = data.DangerLevel;

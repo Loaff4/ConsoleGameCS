@@ -6,4 +6,5 @@ public struct GatheringData
 {
     public BaseEntity[] GatheredEntities;
     public float DangerLevel;
+    public string Name;
 }
