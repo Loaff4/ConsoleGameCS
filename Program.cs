@@ -33,6 +33,9 @@ class Program {
         entities[0].Lethality = 100;
         entities[1].Attack(entities[0]);
         entities[0].Attack(entities[1]);
+        
+        
+
         foreach (KeyValuePair<int, BaseEntity> pair in entities)
         {
             BaseEntity entity = pair.Value;
