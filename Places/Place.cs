@@ -30,7 +30,6 @@ public class Place
             Console.Write($"Welcome back to {Name}. ");
         }
         Console.WriteLine(EnteringMessage);
-
     }
     public void OnExit()
     {
