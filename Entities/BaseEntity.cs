@@ -12,24 +12,23 @@ public abstract class BaseEntity : IItemOwner
 {
 
     public float Level;
-    public float MaxHealth = 200; 
-    public float CurrentHealth;
-    public float DodgeChance; //How likely this entity is to dodge
-    public float Sheild; //How much damage is reduced (dmg = Shield*0.01+1)
-    public float Strength; //The base damage this entity deals with attacks
+    public float MaxHealth {get; protected set;} 
+    public float CurrentHealth {get; protected set;}
+    protected float DodgeChance; //How likely this entity is to dodge
+    public float Sheild {get; protected set;} //How much damage is reduced (dmg = Shield*0.01+1)
+    public float Strength {get; protected set;} //The base damage this entity deals with attacks
     public float Lethality; //How likely this entity is to deal critical damage when holding a weapon
 
-    public List<BaseEntity> Attackers = new(); //Which entity has attacked it this turn
-    public List<BaseEffect> CurrentEffects = new(); 
+    public List<BaseEntity> Attackers {get; protected set;} = new(); //Which entity has attacked it this turn
+    public List<BaseEffect> CurrentEffects {get; protected set;} = new(); 
     public string Name = "nameless entity";
-    public List<BaseItem> InventoryItems = new(); 
-    public int CoinBalance = 0;
-    public BaseTool EquippedTool;
-    public int id; //This will be used to find the entity in lists (not using Name since those can have duplicates)
+    public List<BaseItem> InventoryItems {get; protected set;}= new(); 
+    public int CoinBalance {get; protected set;}= 0;
+    public BaseTool EquippedTool {get; protected set;}
+    
+    public static EmptyEntity Empty {get; private set;} = new EmptyEntity();
 
-    public static EmptyEntity empty = new EmptyEntity();
-
-    List<BaseItem> IItemOwner.InventoryItems {get {return InventoryItems;} set {InventoryItems = value;}}
+    List<BaseItem> IItemOwner.InventoryItems {get; set;}
 
     public BaseEntity(EntityData data) 
     {

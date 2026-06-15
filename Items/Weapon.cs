@@ -7,13 +7,13 @@ namespace Items;
 public class Weapon : BaseTool
 {
 
-    public float AttackDamage;
+    public float AttackDamage {get; private set;}
 
 
-    public float CriticalFactor;
+    public float CriticalFactor {get; private set;}
 
     //How much damage is returned to the user as healing
-    public float Lifesteal;
+    public float Lifesteal {get; private set;}
 
     public Action<IItemOwner, BaseEntity, BaseTool> OnAttack;
 

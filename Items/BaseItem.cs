@@ -4,7 +4,7 @@ namespace Items;
 public abstract class BaseItem
 {
 
-    public int Value;
+    public int Value {get; protected set;}
 
     public string Name;
 

@@ -5,15 +5,15 @@ namespace Effects;
 
 public abstract class BaseEffect
 {
-    public int Duration;
+    public int Duration {get; protected set;}
 
     //How strong is the effect
-    public float Potency;
+    public float Potency {get; protected set;}
 
     //Who is this effect applied to
-    public BaseEntity Owner;
+    public BaseEntity Owner {get; protected set;}
 
-    public string Name;
+    public string Name {get; protected set;}
 
     public BaseEffect(EffectData effectData, BaseEntity owner)
     {

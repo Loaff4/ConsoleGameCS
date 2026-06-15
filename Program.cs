@@ -15,29 +15,7 @@ class Program {
 
     public static Dictionary<int, BaseEntity> entities = new();
     public static void Main(string[] args) {
-        // entities.Add(0, new Goblin(200, 20, "Ginglar"));
-        // entities.Add(1, new Goblin(200, 20, "Junglok"));
         
-        // entities[0].Equip(new Weapon(
-        //     new ToolData
-        //     {
-        //         Name = "Wooden Sword",
-        //         Value = 30,
-        //         AttackDamage = 10,
-        //         CriticalFactor = 0,
-        //         Lifesteal = 20,
-        //         MaxDurability = 50,
-        //         Level = 100,
-        //         OnUse = (new Action<BaseEntity, BaseTool>((BaseEntity target, BaseTool thisWeapon) =>
-        //         {
-        //             target.GainEffect(new Poison(new EffectData {Duration = 3, Potency = 4}, target));
-        //         }))
-        //     }
-        // ));
-
-        // entities[0].Lethality = 100;
-        // entities[1].Attack(entities[0]);
-        // entities[0].Attack(entities[1]);
         
         Place place = new Place(new PlaceData
         {
@@ -54,7 +32,7 @@ class Program {
                             DodgeChance = 0,
                             Strength = 1,
                             Lethality = 0,
-                            Name = "Ass Farter"
+                            Name = "Runcklo"
 
 
                         }), 
@@ -65,7 +43,7 @@ class Program {
                             DodgeChance = 0,
                             Strength = 1,
                             Lethality = 0,
-                            Name = "FUCKING BITCH",
+                            Name = "Fumby",
                         })
                     },
                     DangerLevel = 5,
@@ -90,13 +68,13 @@ class Program {
             Lifesteal = 100,
             OnAttack = new Action<IItemOwner, BaseEntity, BaseTool>((IItemOwner owner, BaseEntity target, BaseTool thisWeapon) =>
             {
-                target.TakeDamage(new DamageData
+                target.GainEffect(new Poison(new EffectData
                 {
-                    DamageAmount = 5000,
-                    DamageSource = owner
-                });
+                    Duration = 1,
+                    Potency = 2
+                }, target));
             }),
-            Name = "Sword of Wood"
+            Name = "Sword of Poison"
 
 
         }));
@@ -112,8 +90,5 @@ class Program {
             entity.TickEffects();
             Console.WriteLine($"{entity.Name} has {entity.CurrentHealth} health");
         }
-
-
-        
     }
 }
