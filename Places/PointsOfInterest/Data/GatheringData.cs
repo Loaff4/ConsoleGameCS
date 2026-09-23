@@ -1,6 +1,6 @@
-using Entities;
+using ConsoleGame.Entities;
 
-namespace Places.PointsOfInterest.Data;
+namespace ConsoleGame.Places.PointsOfInterest.Data;
 
 public struct GatheringData
 {

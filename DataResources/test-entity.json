@@ -1,0 +1,8 @@
+{
+    "level": 1,
+    "health": 100,
+    "dodge-chance": 10,
+    "shield": 5,
+    "strength": 35,
+    "lethality": 3
+}

@@ -1,7 +1,7 @@
-using Places.Data;
-using Places.PointsOfInterest;
+using ConsoleGame.Places.Data;
+using ConsoleGame.Places.PointsOfInterest;
 
-namespace Places;
+namespace ConsoleGame.Places;
 
 
 public class Place

@@ -1,5 +1,5 @@
 using System;
-namespace Items;
+namespace ConsoleGame.Items;
 
 public abstract class BaseItem
 {

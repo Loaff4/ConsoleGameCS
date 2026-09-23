@@ -1,4 +1,4 @@
-namespace Utilities;
+namespace ConsoleGame.Utilities;
 
 public class MathUtil
 {

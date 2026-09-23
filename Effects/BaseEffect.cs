@@ -1,7 +1,7 @@
 using System;
-using Effects.Data;
-using Entities;
-namespace Effects;
+using ConsoleGame.Effects.Data;
+using ConsoleGame.Entities;
+namespace ConsoleGame.Effects;
 
 public abstract class BaseEffect
 {

@@ -1,22 +1,28 @@
-﻿using Effects;
-using Effects.Data;
-using Entities;
-using Entities.Data;
-using Items;
-using Items.Data;
-using Items.Interfaces;
-using Places;
-using Places.Data;
-using Places.PointsOfInterest;
-using Places.PointsOfInterest.Data;
-namespace Main;
+﻿using System.Text.Json;
+using ConsoleGame.Utilities;
+using ConsoleGame.Effects;
+using ConsoleGame.Effects.Data;
+using ConsoleGame.Entities;
+using ConsoleGame.Entities.Data;
+using ConsoleGame.Items;
+using ConsoleGame.Items.Data;
+using ConsoleGame.Items.Interfaces;
+using ConsoleGame.Places;
+using ConsoleGame.Places.Data;
+using ConsoleGame.Places.PointsOfInterest;
+using ConsoleGame.Places.PointsOfInterest.Data;
+namespace ConsoleGame;
 
 class Program {
 
     public static Dictionary<int, BaseEntity> entities = new();
     public static void Main(string[] args) {
+        EntityData butt = EntityData.empty;
+        string jsonString = JsonSerializer.Serialize(butt);
         
-        Player player = new Player(EntityData.empty);
+        EntityData data = JsonUtil.JsonToEntityData(jsonString);
+        Goblin player = new Goblin(data);
+        Console.WriteLine("Health: " + player.MaxHealth);
         // Place place = new Place(new PlaceData
         // {
         //     Pois = new List<BasePoi> 

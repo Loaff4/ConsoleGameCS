@@ -1,8 +1,8 @@
 using System;
-using Entities;
-using Items.Data;
-using Items.Interfaces;
-namespace Items;
+using ConsoleGame.Entities;
+using ConsoleGame.Items.Data;
+using ConsoleGame.Items.Interfaces;
+namespace ConsoleGame.Items;
 
 public class Weapon : BaseTool
 {

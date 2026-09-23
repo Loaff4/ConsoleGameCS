@@ -1,14 +1,14 @@
 using System;
 using System.Reflection.Metadata;
 using System.Reflection.Metadata.Ecma335;
-using Effects;
-using Entities.Data;
-using Items;
-using Items.Interfaces;
-using Utilities;
-namespace Entities;
+using ConsoleGame.Effects;
+using ConsoleGame.Entities.Data;
+using ConsoleGame.Items;
+using ConsoleGame.Items.Interfaces;
+using ConsoleGame.Utilities;
+namespace ConsoleGame.Entities;
 
-public abstract class BaseEntity : IItemOwner
+public abstract class BaseEntity : IItemOwner 
 {
 
     public float Level;

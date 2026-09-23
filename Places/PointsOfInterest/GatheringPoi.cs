@@ -1,7 +1,7 @@
-using Entities;
-using Places.PointsOfInterest.Data;
+using ConsoleGame.Entities;
+using ConsoleGame.Places.PointsOfInterest.Data;
 
-namespace Places.PointsOfInterest;
+namespace ConsoleGame.Places.PointsOfInterest;
 
 class GatheringPoi : BasePoi
 {

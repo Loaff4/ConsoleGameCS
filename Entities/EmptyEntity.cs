@@ -1,6 +1,6 @@
-using Entities.Data;
+using ConsoleGame.Entities.Data;
 
-namespace Entities;
+namespace ConsoleGame.Entities;
 
 public class EmptyEntity : BaseEntity
 {

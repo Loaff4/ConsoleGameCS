@@ -1,4 +1,4 @@
-namespace Effects.Data;
+namespace ConsoleGame.Effects.Data;
 
 public struct EffectData
 {

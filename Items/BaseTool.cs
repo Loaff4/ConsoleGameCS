@@ -1,8 +1,8 @@
 using System;
 using System.Runtime.CompilerServices;
-using Items.Data;
-using Items.Interfaces;
-namespace Items;
+using ConsoleGame.Items.Data;
+using ConsoleGame.Items.Interfaces;
+namespace ConsoleGame.Items;
 
 public abstract class BaseTool : BaseItem
 {

@@ -1,7 +1,7 @@
-using Entities;
-using Items.Interfaces;
+using ConsoleGame.Entities;
+using ConsoleGame.Items.Interfaces;
 
-namespace Items.Data;
+namespace ConsoleGame.Items.Data;
 
 public struct ToolData
 {

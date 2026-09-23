@@ -1,9 +1,10 @@
-using Effects;
-using Items;
+using ConsoleGame.Data;
+using ConsoleGame.Effects;
+using ConsoleGame.Items;
 
-namespace Entities.Data;
+namespace ConsoleGame.Entities.Data;
 
-public struct DamageData
+public struct DamageData : IBaseData
 {
     public float DamageAmount;
     public object DamageSource;

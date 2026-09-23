@@ -1,6 +1,6 @@
-using Entities;
+using ConsoleGame.Entities;
 
-namespace Game;
+namespace ConsoleGame.Game;
 
 public class Battle
 {

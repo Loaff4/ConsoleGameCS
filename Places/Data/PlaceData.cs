@@ -1,6 +1,6 @@
-using Places.PointsOfInterest;
+using ConsoleGame.Places.PointsOfInterest;
 
-namespace Places.Data;
+namespace ConsoleGame.Places.Data;
 
 public struct PlaceData
 {

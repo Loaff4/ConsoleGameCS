@@ -1,4 +1,4 @@
-namespace Game;
+namespace ConsoleGame.Game;
 
 
 public class Game

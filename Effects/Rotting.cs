@@ -1,9 +1,9 @@
 using System.Buffers;
-using Effects.Data;
-using Entities;
-using Entities.Data;
+using ConsoleGame.Effects.Data;
+using ConsoleGame.Entities;
+using ConsoleGame.Entities.Data;
 
-namespace Effects;
+namespace ConsoleGame.Effects;
 
 class Rotting : BaseEffect
 {

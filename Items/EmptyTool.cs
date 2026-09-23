@@ -1,6 +1,6 @@
-using Items.Data;
+using ConsoleGame.Items.Data;
 
-namespace Items;
+namespace ConsoleGame.Items;
 
 public class EmptyTool : BaseTool 
 {

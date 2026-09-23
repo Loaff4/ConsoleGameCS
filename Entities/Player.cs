@@ -1,6 +1,6 @@
 using System;
-using Entities.Data;
-namespace Entities;
+using ConsoleGame.Entities.Data;
+namespace ConsoleGame.Entities;
 
 class Player : BaseEntity
 {
