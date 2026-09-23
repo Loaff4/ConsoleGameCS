@@ -45,7 +45,7 @@ class Player : BaseEntity
     {
         Console.WriteLine($"1. (Strength): {Strength}");
         Console.WriteLine($"2. (Quickness): {DodgeChance}");
-        Console.WriteLine($"3. (Shield): {Sheild}");
+        Console.WriteLine($"3. (Shield): {Shield}");
         Console.WriteLine($"4. (Lethality): {Lethality}");
     }
 
@@ -74,9 +74,9 @@ class Player : BaseEntity
                 DodgeChance = newValue;
                 break;
             case 3:
-                newValue = (int)Math.Clamp(newValue, 0, points+Sheild);
-                newCap = points - (int)(newValue - Sheild);
-                Sheild = newValue;
+                newValue = (int)Math.Clamp(newValue, 0, points+Shield);
+                newCap = points - (int)(newValue - Shield);
+                Shield = newValue;
                 break;
             case 4:
                 newValue = (int)Math.Clamp(newValue, 0, points+Lethality);

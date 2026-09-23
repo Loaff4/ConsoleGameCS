@@ -15,7 +15,7 @@ public struct EntityData : IBaseData
 
     private static EntityData _empty = new EntityData {
         Level = 0,
-        Health = 100,
+        Health = 1,
         DodgeChance = 0,
         Shield = 0,
         Strength = 0,
@@ -23,12 +23,15 @@ public struct EntityData : IBaseData
         Name = "EMPTY ENTITY"
     };
 
-    public static EntityData empty
+    public static EntityData Empty
     {
         get
         {
             return _empty; 
         }
-        private set {}
+        private set
+        {
+            
+        }
     }
 }

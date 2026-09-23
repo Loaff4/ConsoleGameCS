@@ -15,7 +15,7 @@ public abstract class BaseEntity : IItemOwner
     public float MaxHealth {get; protected set;} 
     public float CurrentHealth {get; protected set;}
     protected float DodgeChance; //How likely this entity is to dodge
-    public float Sheild {get; protected set;} //How much damage is reduced (dmg = Shield*0.01+1)
+    public float Shield {get; protected set;} //How much damage is reduced (dmg = Shield*0.01+1)
     public float Strength {get; protected set;} //The base damage this entity deals with attacks
     public float Lethality; //How likely this entity is to deal critical damage when holding a weapon
 
@@ -36,6 +36,7 @@ public abstract class BaseEntity : IItemOwner
         MaxHealth = MathUtil.Scale(data.Health, Level);
         CurrentHealth = MaxHealth;
         Strength = MathUtil.Scale(data.Strength, Level);
+        Shield = data.Shield;
         Name = data.Name;
         
     }
@@ -102,9 +103,9 @@ public abstract class BaseEntity : IItemOwner
             return;
         }
 
-        //Reduce damage with shields
-        dmgAmt /= Sheild*0.01f+1; //Each magnitude of 100 is: 1/2, 1/3, 1/4, etc...
 
+        //Reduce damage with shields
+        dmgAmt /= Shield*0.01f+1; //Each magnitude of 100 is: 1/2, 1/3, 1/4, etc...
         //Try to dodge the attack (take no damage)
         float randFloat = (float)Random.Shared.NextDouble() * 100;
         if (randFloat < DodgeChance) {
@@ -122,6 +123,7 @@ public abstract class BaseEntity : IItemOwner
     }
     public void Heal(float healAmt) 
     {
+        healAmt = MathUtil.Round2(healAmt);
         if (healAmt + CurrentHealth > MaxHealth)
         {
             CurrentHealth = MaxHealth;
@@ -134,7 +136,7 @@ public abstract class BaseEntity : IItemOwner
 
     public void TakeDamage(DamageData dmg) {
 
-        float dmgAmt = dmg.DamageAmount;
+        float dmgAmt = MathUtil.Round2(dmg.DamageAmount);
         object dmgSource = dmg.DamageSource;
 
         if (dmgAmt <= 0) return; //Don't print or do anything if the dmg is 0 or less since that's redundant

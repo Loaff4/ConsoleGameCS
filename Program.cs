@@ -17,12 +17,44 @@ class Program {
 
     public static Dictionary<int, BaseEntity> entities = new();
     public static void Main(string[] args) {
-        EntityData butt = EntityData.empty;
-        string jsonString = JsonSerializer.Serialize(butt);
+        EntityData butt = EntityData.Empty;
+        string jsonString = JsonSerializer.Serialize(new EntityData
+        {
+            Health = 100,
+            Level = 10,
+            Lethality = 10,
+            Strength = 100,
+            Shield = 55,
+            DodgeChance = 6,
+            Name = "Jared"
+        });
+        string jsonString2 = JsonSerializer.Serialize(new EntityData
+        {
+            Health = 100,
+            Level = 10,
+            Lethality = 10,
+            Strength = 100,
+            Shield = 199,
+            DodgeChance = 6,
+            Name = "d"
+        });
         
         EntityData data = JsonUtil.JsonToEntityData(jsonString);
-        Goblin player = new Goblin(data);
-        Console.WriteLine("Health: " + player.MaxHealth);
+        EntityData data2 = JsonUtil.JsonToEntityData(jsonString2);
+        Goblin goblin1 = new Goblin(data);
+        Console.WriteLine("Health: " + goblin1.MaxHealth);
+
+        Goblin golbin2 = new Goblin(data2);
+        Console.WriteLine("shield: " + golbin2.Shield);
+
+        string damageString = JsonSerializer.Serialize(new DamageData
+        {
+            DamageAmount = 23232,
+            DamageSource = golbin2
+        });
+        DamageData damageData = JsonUtil.JsonToDamageData(damageString);
+        golbin2.OnAttacked(goblin1, damageData, false);
+        Console.WriteLine(golbin2.CurrentHealth);
         // Place place = new Place(new PlaceData
         // {
         //     Pois = new List<BasePoi> 

@@ -13,18 +13,18 @@
 /home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ConsoleGame.genruntimeconfig.cache
 /home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ref/ConsoleGame.dll
 /home/cole/Projects/C# Projects/ConsoleGame/obj/Debug/net10.0/ConsoleGame.sourcelink.json
-C:\Users\Cole\Documents\ConsoleGameCS\obj\Debug\net10.0\ConsoleGame.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Cole\Documents\ConsoleGameCS\obj\Debug\net10.0\ConsoleGame.AssemblyInfoInputs.cache
-C:\Users\Cole\Documents\ConsoleGameCS\obj\Debug\net10.0\ConsoleGame.AssemblyInfo.cs
-C:\Users\Cole\Documents\ConsoleGameCS\obj\Debug\net10.0\ConsoleGame.csproj.CoreCompileInputs.cache
-C:\Users\Cole\Documents\ConsoleGameCS\obj\Debug\net10.0\ConsoleGame.sourcelink.json
-C:\Users\Cole\Documents\ConsoleGameCS\obj\Debug\net10.0\ConsoleGame.dll
-C:\Users\Cole\Documents\ConsoleGameCS\obj\Debug\net10.0\refint\ConsoleGame.dll
-C:\Users\Cole\Documents\ConsoleGameCS\obj\Debug\net10.0\ConsoleGame.pdb
-C:\Users\Cole\Documents\ConsoleGameCS\bin\Debug\net10.0\ConsoleGame.exe
-C:\Users\Cole\Documents\ConsoleGameCS\bin\Debug\net10.0\ConsoleGame.deps.json
-C:\Users\Cole\Documents\ConsoleGameCS\bin\Debug\net10.0\ConsoleGame.runtimeconfig.json
-C:\Users\Cole\Documents\ConsoleGameCS\bin\Debug\net10.0\ConsoleGame.dll
-C:\Users\Cole\Documents\ConsoleGameCS\bin\Debug\net10.0\ConsoleGame.pdb
-C:\Users\Cole\Documents\ConsoleGameCS\obj\Debug\net10.0\ConsoleGame.genruntimeconfig.cache
-C:\Users\Cole\Documents\ConsoleGameCS\obj\Debug\net10.0\ref\ConsoleGame.dll
+C:/Users/Cole/Documents/ConsoleGameCS/obj/Debug/net10.0/ConsoleGame.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/Cole/Documents/ConsoleGameCS/obj/Debug/net10.0/ConsoleGame.AssemblyInfoInputs.cache
+C:/Users/Cole/Documents/ConsoleGameCS/obj/Debug/net10.0/ConsoleGame.AssemblyInfo.cs
+C:/Users/Cole/Documents/ConsoleGameCS/obj/Debug/net10.0/ConsoleGame.csproj.CoreCompileInputs.cache
+C:/Users/Cole/Documents/ConsoleGameCS/obj/Debug/net10.0/ConsoleGame.sourcelink.json
+C:/Users/Cole/Documents/ConsoleGameCS/obj/Debug/net10.0/ConsoleGame.dll
+C:/Users/Cole/Documents/ConsoleGameCS/obj/Debug/net10.0/refint/ConsoleGame.dll
+C:/Users/Cole/Documents/ConsoleGameCS/obj/Debug/net10.0/ConsoleGame.pdb
+C:/Users/Cole/Documents/ConsoleGameCS/bin/Debug/net10.0/ConsoleGame.exe
+C:/Users/Cole/Documents/ConsoleGameCS/bin/Debug/net10.0/ConsoleGame.deps.json
+C:/Users/Cole/Documents/ConsoleGameCS/bin/Debug/net10.0/ConsoleGame.runtimeconfig.json
+C:/Users/Cole/Documents/ConsoleGameCS/bin/Debug/net10.0/ConsoleGame.dll
+C:/Users/Cole/Documents/ConsoleGameCS/bin/Debug/net10.0/ConsoleGame.pdb
+C:/Users/Cole/Documents/ConsoleGameCS/obj/Debug/net10.0/ConsoleGame.genruntimeconfig.cache
+C:/Users/Cole/Documents/ConsoleGameCS/obj/Debug/net10.0/ref/ConsoleGame.dll
