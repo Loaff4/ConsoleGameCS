@@ -4,7 +4,7 @@ using ConsoleGame.Items;
 
 namespace ConsoleGame.Entities.Data;
 
-public struct DamageData : IBaseData
+public struct DamageData 
 {
     public float DamageAmount {get; set;}
     public object DamageSource {get; set;}

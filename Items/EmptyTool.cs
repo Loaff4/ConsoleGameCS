@@ -4,7 +4,7 @@ namespace ConsoleGame.Items;
 
 public class EmptyTool : BaseTool 
 {
-    public EmptyTool(ToolData data) : base (data)
+    public EmptyTool(ToolData data) : base (ToolData.Empty)
     {
         
     }

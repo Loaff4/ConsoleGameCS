@@ -17,14 +17,14 @@ public abstract class BaseEntity : IItemOwner
     protected float DodgeChance; //How likely this entity is to dodge
     public float Shield {get; protected set;} //How much damage is reduced (dmg = Shield*0.01+1)
     public float Strength {get; protected set;} //The base damage this entity deals with attacks
-    public float Lethality; //How likely this entity is to deal critical damage when holding a weapon
+    public float Lethality; //Percent chance to deal critical damage when holding a weapon
 
     public List<BaseEntity> Attackers {get; protected set;} = new(); //Which entity has attacked it this turn
     public List<BaseEffect> CurrentEffects {get; protected set;} = new(); 
     public string Name = "nameless entity";
-    public List<BaseItem> InventoryItems {get; protected set;}= new(); 
+    public List<BaseItem> InventoryItems {get; protected set;} = new(); 
     public int CoinBalance {get; protected set;}= 0;
-    public BaseTool EquippedTool {get; protected set;}
+    public BaseTool EquippedTool {get; protected set;} = BaseTool.Empty;
     
     public static EmptyEntity Empty {get; private set;} = new EmptyEntity();
 
@@ -41,11 +41,23 @@ public abstract class BaseEntity : IItemOwner
         
     }
 
+    public bool HasEquippedTool()
+    {
+        if (EquippedTool == BaseTool.Empty)
+        {
+            return false;
+        } else
+        {
+            return true;
+        }
+    }
+
 
     //Target an enemy with an attack (true attacks bypass dodging and dmg reduction)
     public void Attack(BaseEntity targetEntity, float miscMultiplier = 1, bool trueAttack = false)
     {   
-        
+        Console.WriteLine($"{Name} is attacking {targetEntity.Name}\n");
+
 
         float dmgAmt = Strength;
 
@@ -58,15 +70,12 @@ public abstract class BaseEntity : IItemOwner
                 bonusDamage += weapon.AttackDamage;
             }
 
-            weapon.OnAttack(this, targetEntity, weapon);
             weapon.Decay(1);
 
             dmgAmt += bonusDamage;
             dmgAmt *= miscMultiplier;
 
-            float healAmt = dmgAmt*weapon.Lifesteal*0.01f; //100 Lifesteal means heal for the same amount as dmg dealt
-
-            Heal(healAmt);
+            
         }
         else
         {
@@ -84,7 +93,6 @@ public abstract class BaseEntity : IItemOwner
 
         
 
-        Console.WriteLine($"{Name} is attacking {targetEntity.Name}\n");
         targetEntity.OnAttacked(this, dmg, trueAttack);
     }
    
@@ -111,15 +119,29 @@ public abstract class BaseEntity : IItemOwner
         if (randFloat < DodgeChance) {
             Console.WriteLine($"{Name} has dodged {attacker.Name}'s attack\n");
             dmgAmt = 0;
+        } else
+        {
+            DamageData dmgData = new DamageData
+            {
+                DamageAmount = dmgAmt,
+                DamageSource = attacker
+            };
+            TakeDamage(dmgData);
+
+            if (attacker.HasEquippedTool() && attacker.EquippedTool is Weapon)
+            {
+                Weapon weapon = (Weapon) attacker.EquippedTool; 
+
+                float healAmt = dmgAmt*weapon.Lifesteal*0.01f; //100 Lifesteal means heal for the same amount as dmg dealt
+                attacker.Heal(healAmt);
+
+                weapon.OnHit(attacker, this, weapon);
+
+            }
         }
         
-        DamageData newDmg = new DamageData
-        {
-            DamageAmount = dmgAmt,
-            DamageSource = attacker
-        };
+        
 
-        TakeDamage(newDmg);
     }
     public void Heal(float healAmt) 
     {

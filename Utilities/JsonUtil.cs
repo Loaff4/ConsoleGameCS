@@ -7,7 +7,7 @@ public class JsonUtil
 {
     public static EntityData JsonToEntityData(string jsonString)
     {
-
+        
         EntityData? data = JsonSerializer.Deserialize<EntityData>(jsonString);
         if (data != null) return (EntityData)data;
         

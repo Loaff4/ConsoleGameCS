@@ -20,7 +20,7 @@ public class Poison : BaseEffect
         Console.WriteLine($"{Owner.Name} was hurt by {Name}\n");
         Owner.TakeDamage(new DamageData
         {
-            DamageAmount = Potency * 5,
+            DamageAmount = Potency * 10,
             DamageSource = this
         });
         

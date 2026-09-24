@@ -15,7 +15,7 @@ public class Weapon : BaseTool
     //How much damage is returned to the user as healing
     public float Lifesteal {get; private set;}
 
-    public Action<IItemOwner, BaseEntity, BaseTool> OnAttack;
+    public Action<IItemOwner, BaseEntity, BaseTool> OnHit;
 
 
     public Weapon(ToolData data) : base (data)
@@ -23,14 +23,14 @@ public class Weapon : BaseTool
         AttackDamage = data.AttackDamage + (data.AttackDamage*Level*0.01f); //Level 100 doubles dmg, Level 200 triples dmg, etc...
         CriticalFactor = data.CriticalFactor;
         Lifesteal = data.Lifesteal;
-        OnAttack = data.OnAttack ?? new Action<IItemOwner, BaseEntity, BaseTool>((IItemOwner owner, BaseEntity target, BaseTool thisWeapon) => {});
+        OnHit = data.OnAttack ?? new Action<IItemOwner, BaseEntity, BaseTool>((IItemOwner owner, BaseEntity target, BaseTool thisWeapon) => {});
     }
 
     
     public float GetCritDamage() {
         float critDamage = 0;
 
-        critDamage = AttackDamage + AttackDamage * CriticalFactor *0.01f; //Add more damage based on the current AttackDamage. This is the best way I could think of
+        critDamage = AttackDamage * CriticalFactor; //Add more damage based on the current AttackDamage. This is the best way I could think of
         return critDamage;
                 
     }

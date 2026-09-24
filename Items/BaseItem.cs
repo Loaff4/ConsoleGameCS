@@ -1,4 +1,5 @@
 using System;
+using ConsoleGame.Items.Data;
 namespace ConsoleGame.Items;
 
 public abstract class BaseItem
@@ -13,4 +14,6 @@ public abstract class BaseItem
         Value = value;
         Name = name;
     }
+
+    
 }

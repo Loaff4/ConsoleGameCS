@@ -3,7 +3,7 @@ using ConsoleGame.Data;
 namespace ConsoleGame.Entities.Data;
 
 
-public struct EntityData : IBaseData
+public struct EntityData
 {
     public float Level {get; set;}
     public float Health {get; set;}
