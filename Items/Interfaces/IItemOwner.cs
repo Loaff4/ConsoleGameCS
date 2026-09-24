@@ -7,4 +7,7 @@ public interface IItemOwner
     public void DeleteItem(BaseItem item);
     public void SellItem(BaseItem item);
 
+    public void GiveItem(BaseItem item, IItemOwner newOwner);
+
+    public void ReceiveItem(BaseItem item);
 }

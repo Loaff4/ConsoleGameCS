@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using ConsoleGame.Entities;
 using ConsoleGame.Items.Data;
 using ConsoleGame.Items.Interfaces;
 namespace ConsoleGame.Items;
@@ -10,7 +11,6 @@ public abstract class BaseTool : BaseItem
     public float MaxDurability {get; protected set;} 
     public float CurrentDurability {get; protected set;} //How many durability points this has (I could make it deleted or just a different state idk yet)
     public float Level {get; protected set;} //How "strong" this tool is. Will determine stat multipliers
-    public IItemOwner Owner {get; protected set;}
 
     public static BaseTool Empty {get; private set;} = new EmptyTool(ToolData.Empty);
 

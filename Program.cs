@@ -45,20 +45,31 @@ class Program {
         Goblin goblin1 = new Goblin(data);
         Goblin goblin2 = new Goblin(data2);
         
-
-        goblin1.Equip(new Weapon(new ToolData
+        Weapon testWeapon = new Weapon(new ToolData
         {
-            OnAttack = new Action<IItemOwner, BaseEntity, BaseTool>((IItemOwner owner, BaseEntity target, BaseTool weapon) =>
+            OnAttack = new Action<IItemOwner, BaseEntity, BaseTool>((owner, target, weapon) =>
             {
                 target.GainEffect(new Poison(new EffectData
                 {
                     Duration = 1000,
                     Potency = 200
                 }, target));
-            })
-        }));
+            }),
+            Name = "sword of guh"
+        });
 
-        goblin1.Attack(goblin2);
+        goblin1.ReceiveItem(testWeapon);
+        goblin1.PrintInventoryItems();
+
+        goblin1.Equip(testWeapon);
+
+        
+        goblin1.GiveItem(testWeapon, goblin2);
+
+        goblin1.PrintInventoryItems();
+        goblin2.PrintInventoryItems();
+
+
         goblin2.TickEffects();
         
 

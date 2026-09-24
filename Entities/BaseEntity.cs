@@ -167,15 +167,15 @@ public abstract class BaseEntity : IItemOwner
     }
 
 
-    //Sell an item to any particular shop (might put this under the BaseItem class idk yet)
-    public void SellItem(BaseItem item) {
-        InventoryItems.Remove(item);
-        CoinBalance += item.Value;
-    }
+    
 
 
     public void Equip(BaseTool tool) {
         EquippedTool = tool;
+    }
+    public void UnequipTool()
+    {
+        EquippedTool = BaseTool.Empty;
     }
 
     public void GainEffect(BaseEffect effect)
@@ -191,8 +191,70 @@ public abstract class BaseEntity : IItemOwner
         }
     }
 
+    public void PrintInventoryItems()
+    {
+
+
+        int number = 1;
+
+        Console.WriteLine(Name + "'s inventory: ");
+        Console.WriteLine("--");
+        if (InventoryItems.Count == 0)
+        {
+            Console.WriteLine("Empty!");
+            Console.WriteLine("--\n");
+            return;    
+        }
+
+        foreach(BaseItem item in InventoryItems) {
+            Console.WriteLine(number+ ". " + item.Name);
+            number++;
+        }
+        Console.WriteLine("--\n");
+    }
+    
+    public bool HasItem(BaseItem item)
+    {
+        if (CollectionUtil.ValueExistsInCollection<BaseItem>(item, InventoryItems))
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void DeleteItem(BaseItem item)
     {
-        InventoryItems.Remove(item);
+        if (HasItem(item)) {
+            if (item.Equals(EquippedTool))
+            {
+                UnequipTool();
+            }
+            InventoryItems.Remove(item);
+        }
+    }
+
+    public void ReceiveItem(BaseItem item)
+    {
+        InventoryItems.Add(item);
+    }
+
+
+    //Sell an item to any particular shop
+    public void SellItem(BaseItem item) {
+        if (HasItem(item))
+        {
+            InventoryItems.Remove(item);
+            CoinBalance += item.Value;
+        }
+        
+    }
+
+    public void GiveItem(BaseItem item, IItemOwner newOwner)
+    {
+        if (HasItem(item))
+        {
+            item.Transfer(newOwner);
+            DeleteItem(item); 
+        }
     }
 }
