@@ -18,16 +18,7 @@ class Program {
     public static Dictionary<int, BaseEntity> entities = new();
     public static void Main(string[] args) {
         EntityData butt = EntityData.Empty;
-        string jsonString = JsonSerializer.Serialize(new EntityData
-        {
-            Health = 100,
-            Level = 10,
-            Lethality = 10,
-            Strength = 100,
-            Shield = 55,
-            DodgeChance = 6,
-            Name = "Jared"
-        });
+        EntityData data1 = JsonUtil.JsonToEntityData(JsonUtil.ReadJson("/home/cole/test-entity.json"));
         
         string jsonString2 = JsonSerializer.Serialize(new EntityData
         {
@@ -40,9 +31,8 @@ class Program {
             Name = "d"
         });
         
-        EntityData data = JsonUtil.JsonToEntityData(jsonString);
         EntityData data2 = JsonUtil.JsonToEntityData(jsonString2);
-        Goblin goblin1 = new Goblin(data);
+        Goblin goblin1 = new Goblin(data1);
         Goblin goblin2 = new Goblin(data2);
         
         Weapon testWeapon = new Weapon(new ToolData

@@ -1,5 +1,3 @@
-
-using ConsoleGame.Data;
 namespace ConsoleGame.Entities.Data;
 
 

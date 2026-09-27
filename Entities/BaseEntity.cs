@@ -28,7 +28,7 @@ public abstract class BaseEntity : IItemOwner
     
     public static EmptyEntity Empty {get; private set;} = new EmptyEntity();
 
-    List<BaseItem> IItemOwner.InventoryItems {get; set;}
+    List<BaseItem> IItemOwner.InventoryItems {get; set;} = new List<BaseItem>();
 
     public BaseEntity(EntityData data) 
     {

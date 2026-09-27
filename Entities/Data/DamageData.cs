@@ -1,4 +1,3 @@
-using ConsoleGame.Data;
 using ConsoleGame.Effects;
 using ConsoleGame.Items;
 

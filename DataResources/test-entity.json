@@ -4,5 +4,6 @@
     "dodge-chance": 10,
     "shield": 5,
     "strength": 35,
-    "lethality": 3
+    "lethality": 3,
+    "name": "felix"
 }

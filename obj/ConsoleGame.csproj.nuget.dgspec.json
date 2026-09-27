@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/cole/Projects/C# Projects/ConsoleGame/ConsoleGame.csproj": {}
+    "/home/cole/Projects/C#Projects/ConsoleGame/ConsoleGame.csproj": {}
   },
   "projects": {
-    "/home/cole/Projects/C# Projects/ConsoleGame/ConsoleGame.csproj": {
+    "/home/cole/Projects/C#Projects/ConsoleGame/ConsoleGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/cole/Projects/C# Projects/ConsoleGame/ConsoleGame.csproj",
+        "projectUniqueName": "/home/cole/Projects/C#Projects/ConsoleGame/ConsoleGame.csproj",
         "projectName": "ConsoleGame",
-        "projectPath": "/home/cole/Projects/C# Projects/ConsoleGame/ConsoleGame.csproj",
+        "projectPath": "/home/cole/Projects/C#Projects/ConsoleGame/ConsoleGame.csproj",
         "packagesPath": "/home/cole/.nuget/packages/",
-        "outputPath": "/home/cole/Projects/C# Projects/ConsoleGame/obj/",
+        "outputPath": "/home/cole/Projects/C#Projects/ConsoleGame/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/cole/.nuget/NuGet/NuGet.Config"
