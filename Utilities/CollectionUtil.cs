@@ -1,5 +1,4 @@
-using System.Collections.ObjectModel;
-
+using ConsoleGame.Items;
 namespace ConsoleGame.Utilities;
 
 public class CollectionUtil
@@ -16,5 +15,26 @@ public class CollectionUtil
             }
         }
         return false;
+    }
+
+    public static void PrintItemList(List<BaseItem> itemList)
+    {
+        Console.WriteLine("--");
+        if (itemList.Count == 0)
+        {
+            Console.WriteLine("Empty!");
+            Console.WriteLine("--\n");
+            return;
+        }
+
+        int number = 1;
+        
+        foreach(BaseItem item in itemList)
+        {
+            Console.WriteLine($"{number}. {item.Name}");
+            number++;
+        }
+        
+        Console.WriteLine("--\n");
     }
 }

@@ -199,25 +199,8 @@ public abstract class BaseEntity : IItemOwner, IInteractable
 
     public void PrintInventoryItems()
     {
-
-
-
         Console.WriteLine(Name + "'s inventory: ");
-        Console.WriteLine("--");
-        if (InventoryItems.Count == 0)
-        {
-            Console.WriteLine("Empty!");
-            Console.WriteLine("--\n");
-            return;    
-        }
-
-        int number = 1;
-
-        foreach(BaseItem item in InventoryItems) {
-            Console.WriteLine(number+ ". " + item.Name);
-            number++;
-        }
-        Console.WriteLine("--\n");
+        CollectionUtil.PrintItemList(InventoryItems);
     }
     
     public bool HasItem(BaseItem item)

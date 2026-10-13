@@ -21,6 +21,11 @@ public class MerchantBehavior : BaseBehavior
 
     private void RemoveWare(BaseItem item)
     {
+        Wares.Remove(item);
+    }
+
+    public void ListWares()
+    {
         
     }
 }
