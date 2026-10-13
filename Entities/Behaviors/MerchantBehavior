@@ -1,0 +1,24 @@
+using System.Collections.Generic;
+
+namespace ConsoleGame.Entities.Behaviors;
+
+public class MerchantBehavior
+{
+
+
+    private BaseEntity Owner;
+    public Dictionary<BaseItem, int> Wares;
+    MerchantBehavior(MerchantData data, BaseEntity owner)
+    {
+        Wares = data.Wares;
+        
+        Owner = owner;
+
+        Owner.OnItemRemoved += 
+    }
+
+    private void RemoveWare(BaseItem item)
+    {
+        
+    }
+}

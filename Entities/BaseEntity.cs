@@ -6,9 +6,10 @@ using ConsoleGame.Entities.Data;
 using ConsoleGame.Items;
 using ConsoleGame.Items.Interfaces;
 using ConsoleGame.Utilities;
+using ConsoleGame.Entities.Interfaces;
 namespace ConsoleGame.Entities;
 
-public abstract class BaseEntity : IItemOwner 
+public abstract class BaseEntity : IItemOwner, IInteractable
 {
 
     public float Level;
@@ -22,13 +23,16 @@ public abstract class BaseEntity : IItemOwner
     public List<BaseEntity> Attackers {get; protected set;} = new(); //Which entity has attacked it this turn
     public List<BaseEffect> CurrentEffects {get; protected set;} = new(); 
     public string Name = "nameless entity";
-    public List<BaseItem> InventoryItems {get; protected set;} = new(); 
     public int CoinBalance {get; protected set;}= 0;
     public BaseTool EquippedTool {get; protected set;} = BaseTool.Empty;
     
     public static EmptyEntity Empty {get; private set;} = new EmptyEntity();
 
-    List<BaseItem> IItemOwner.InventoryItems {get; set;} = new List<BaseItem>();
+    public List<BaseItem> InventoryItems {get; set;} = new(); 
+
+    public int InteractLevel {get; set;} = 1;
+
+    public Action<BaseItem> OnItemRemoved;
 
     public BaseEntity(EntityData data) 
     {
@@ -39,6 +43,8 @@ public abstract class BaseEntity : IItemOwner
         Shield = data.Shield;
         Name = data.Name;
         
+        
+                
     }
 
     public bool HasEquippedTool()
@@ -195,7 +201,6 @@ public abstract class BaseEntity : IItemOwner
     {
 
 
-        int number = 1;
 
         Console.WriteLine(Name + "'s inventory: ");
         Console.WriteLine("--");
@@ -205,6 +210,8 @@ public abstract class BaseEntity : IItemOwner
             Console.WriteLine("--\n");
             return;    
         }
+
+        int number = 1;
 
         foreach(BaseItem item in InventoryItems) {
             Console.WriteLine(number+ ". " + item.Name);
@@ -222,7 +229,7 @@ public abstract class BaseEntity : IItemOwner
         return false;
     }
 
-    public void DeleteItem(BaseItem item)
+    public void RemoveItem(BaseItem item)
     {
         if (HasItem(item)) {
             if (item.Equals(EquippedTool))
@@ -230,6 +237,7 @@ public abstract class BaseEntity : IItemOwner
                 UnequipTool();
             }
             InventoryItems.Remove(item);
+            OnItemRemoved?.Invoke(item);
         }
     }
 
@@ -243,7 +251,7 @@ public abstract class BaseEntity : IItemOwner
     public void SellItem(BaseItem item) {
         if (HasItem(item))
         {
-            InventoryItems.Remove(item);
+            RemoveItem(item);
             CoinBalance += item.Value;
         }
         
@@ -254,7 +262,12 @@ public abstract class BaseEntity : IItemOwner
         if (HasItem(item))
         {
             item.Transfer(newOwner);
-            DeleteItem(item); 
-        }
+            RemoveItem(item); 
+        } 
+    }
+
+    public void OnInteract(BaseEntity interactingEntity)
+    {
+        throw new NotImplementedException();
     }
 }

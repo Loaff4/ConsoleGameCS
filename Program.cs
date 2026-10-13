@@ -11,6 +11,7 @@ using ConsoleGame.Places;
 using ConsoleGame.Places.Data;
 using ConsoleGame.Places.PointsOfInterest;
 using ConsoleGame.Places.PointsOfInterest.Data;
+using ConsoleGame.Entities.Creatures;
 namespace ConsoleGame;
 
 class Program {
@@ -18,7 +19,7 @@ class Program {
     public static Dictionary<int, BaseEntity> entities = new();
     public static void Main(string[] args) {
         EntityData butt = EntityData.Empty;
-        EntityData data1 = JsonUtil.JsonToEntityData(JsonUtil.ReadJson("/home/cole/test-entity.json"));
+        EntityData data1 = JsonUtil.JsonToEntityData(JsonUtil.ReadJson("DataResources\test-entity.json"));
         
         string jsonString2 = JsonSerializer.Serialize(new EntityData
         {
@@ -28,7 +29,7 @@ class Program {
             Strength = 100,
             Shield = 199,
             DodgeChance = 6,
-            Name = "d"
+            Name = "penis monster"
         });
         
         EntityData data2 = JsonUtil.JsonToEntityData(jsonString2);

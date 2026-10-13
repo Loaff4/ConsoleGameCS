@@ -3,13 +3,13 @@ namespace ConsoleGame.Entities.Data;
 
 public struct EntityData
 {
-    public float Level {get; set;}
-    public float Health {get; set;}
-    public float DodgeChance {get; set;}
-    public float Shield {get; set;}
-    public float Strength {get; set;}
-    public float Lethality {get; set;}
-    public string Name {get; set;}
+    public float Level {get; private set;}
+    public float Health {get; private set;}
+    public float DodgeChance {get; private set;}
+    public float Shield {get; private set;}
+    public float Strength {get; private set;}
+    public float Lethality {get; private set;}
+    public string Name {get; private set;}
 
     private static EntityData _empty = new EntityData {
         Level = 0,

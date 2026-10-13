@@ -1,6 +1,6 @@
 using System;
 using ConsoleGame.Entities.Data;
-namespace ConsoleGame.Entities;
+namespace ConsoleGame.Entities.Creatures;
 
 class Goblin : BaseEntity
 {
