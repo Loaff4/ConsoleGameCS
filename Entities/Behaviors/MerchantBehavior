@@ -14,7 +14,7 @@ public class MerchantBehavior
         
         Owner = owner;
 
-        Owner.OnItemRemoved += 
+        Owner.OnItemRemoved += RemoveWare();
     }
 
     private void RemoveWare(BaseItem item)
