@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using ConsoleGame.Items;
+using ConsoleGame.Entities.Behaviors.Data;
 
 namespace ConsoleGame.Entities.Behaviors;
 
@@ -14,7 +16,7 @@ public class MerchantBehavior
         
         Owner = owner;
 
-        Owner.OnItemRemoved += RemoveWare();
+        Owner.OnItemRemoved += RemoveWare;
     }
 
     private void RemoveWare(BaseItem item)

@@ -13,7 +13,7 @@ public abstract class BaseEffect
     //Who is this effect applied to
     public BaseEntity Owner {get; protected set;}
 
-    public string Name {get; protected set;} = "UNTITLED_EFFECT";
+     public string Name {get; protected set;} = "UNTITLED_EFFECT";
 
     public BaseEffect(EffectData effectData, BaseEntity owner)
     {
