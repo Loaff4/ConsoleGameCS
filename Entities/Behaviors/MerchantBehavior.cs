@@ -4,14 +4,14 @@ using ConsoleGame.Entities.Behaviors.Data;
 
 namespace ConsoleGame.Entities.Behaviors;
 
-public class MerchantBehavior
+public class MerchantBehavior : BaseBehavior
 {
 
 
-    private BaseEntity Owner;
     public Dictionary<BaseItem, int> Wares;
-    MerchantBehavior(MerchantData data, BaseEntity owner)
+    MerchantBehavior(MerchantData data, BaseEntity owner) : base(owner)
     {
+        
         Wares = data.Wares;
         
         Owner = owner;
