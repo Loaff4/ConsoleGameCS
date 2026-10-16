@@ -32,7 +32,7 @@ public abstract class Entity : IItemOwner, IInteractable
 
     public int InteractLevel {get; set;} = 1;
 
-    public Action<Item> OnItemRemoved;
+    public event Action<Item> OnItemRemoved = null!;
 
     public Entity(EntityData data) 
     {
