@@ -10,7 +10,7 @@ public class Poison : BaseEffect
 
     
     
-    public Poison(EffectData effectData, BaseEntity owner) : base(effectData, owner)
+    public Poison(EffectData effectData, Entity owner) : base(effectData, owner)
     {
         Name = "Poison";
     }

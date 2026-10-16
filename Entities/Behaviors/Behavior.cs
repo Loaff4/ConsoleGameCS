@@ -1,8 +1,9 @@
+
 namespace ConsoleGame.Entities.Behaviors;
 
-public abstract class BaseBehavior
+public abstract class Behavior
 {
-    protected BaseEntity Owner;
+    protected Entity Owner;
 
     public int Proficiency {get; set;}
     public void OnInteract()
@@ -10,7 +11,7 @@ public abstract class BaseBehavior
         
     }
 
-    protected BaseBehavior(BaseEntity owner)
+    protected Behavior(Entity owner)
     {
         Owner = owner;
     }

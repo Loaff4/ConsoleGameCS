@@ -6,9 +6,9 @@ public class Battle
 {
 
     //What entities are in this battle
-    public List<BaseEntity> Participants {get; private set;}
+    public List<Entity> Participants {get; private set;}
     private int CurrentTurn;
-    public Battle(List<BaseEntity> startingParticipants) 
+    public Battle(List<Entity> startingParticipants) 
     {
         Participants = startingParticipants;
     }
@@ -18,7 +18,7 @@ public class Battle
     private void EndTurn()
     {
         CurrentTurn++;
-        foreach (BaseEntity entity in Participants)
+        foreach (Entity entity in Participants)
         {
             entity.TickEffects();
         }

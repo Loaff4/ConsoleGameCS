@@ -12,7 +12,7 @@ public struct ToolData
     public float Durability;
     public float CriticalFactor;
     public float Lifesteal;
-    public Action<IItemOwner, BaseEntity, BaseTool> OnAttack;
+    public Action<IItemOwner, Entity, Tool> OnAttack;
 
     public static ToolData Empty = new ToolData
     {
@@ -23,6 +23,6 @@ public struct ToolData
         Durability = 1,
         CriticalFactor = 0,
         Lifesteal = 0,
-        OnAttack = new Action<IItemOwner, BaseEntity, BaseTool>((IItemOwner owner, BaseEntity target, BaseTool thisTool) => {})
+        OnAttack = new Action<IItemOwner, Entity, Tool>((IItemOwner owner, Entity target, Tool thisTool) => {})
     };
 }

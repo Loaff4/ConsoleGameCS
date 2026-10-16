@@ -8,7 +8,7 @@ namespace ConsoleGame.Effects;
 class Rotting : BaseEffect
 {
 
-    Rotting(EffectData effectData, BaseEntity owner) : base(effectData, owner)
+    Rotting(EffectData effectData, Entity owner) : base(effectData, owner)
     {
         Name = "Rotting";
     }
@@ -24,7 +24,7 @@ class Rotting : BaseEffect
 
         
         //Apply the poison effect to each attacker this turn
-        foreach (BaseEntity attacker in Owner.Attackers)
+        foreach (Entity attacker in Owner.Attackers)
         {
             Poison newPoison = new Poison(new EffectData {Duration = 2, Potency = 0.5f}, attacker);
             attacker.GainEffect(newPoison);

@@ -11,11 +11,11 @@ public abstract class BaseEffect
     public float Potency {get; protected set;}
 
     //Who is this effect applied to
-    public BaseEntity Owner {get; protected set;}
+    public Entity Owner {get; protected set;}
 
      public string Name {get; protected set;} = "UNTITLED_EFFECT";
 
-    public BaseEffect(EffectData effectData, BaseEntity owner)
+    public BaseEffect(EffectData effectData, Entity owner)
     {
         Duration = effectData.Duration;
         Potency = effectData.Potency;

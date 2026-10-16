@@ -4,16 +4,16 @@ using ConsoleGame.Items.Data;
 using ConsoleGame.Items.Interfaces;
 namespace ConsoleGame.Items;
 
-public abstract class BaseItem
+public abstract class Item
 {
 
     public int Value {get; protected set;}
 
-    public IItemOwner Owner {get; protected set;} = BaseEntity.Empty;
+    public IItemOwner Owner {get; protected set;} = Entity.Empty;
 
     public string Name;
 
-    public BaseItem(int value, string name)
+    public Item(int value, string name)
     {
         Value = value;
         Name = name;

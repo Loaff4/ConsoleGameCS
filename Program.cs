@@ -9,60 +9,10 @@ using ConsoleGame.Items.Data;
 using ConsoleGame.Items.Interfaces;
 using ConsoleGame.Places;
 using ConsoleGame.Places.Data;
-using ConsoleGame.Places.PointsOfInterest;
-using ConsoleGame.Places.PointsOfInterest.Data;
 using ConsoleGame.Entities.Creatures;
 namespace ConsoleGame;
 
-class Program {
-
-    public static Dictionary<int, BaseEntity> entities = new();
-    public static void Main(string[] args) {
-        EntityData butt = EntityData.Empty;
-        EntityData data1 = JsonUtil.JsonToEntityData(JsonUtil.ReadJson("DataResources\test-entity.json"));
-        
-        string jsonString2 = JsonSerializer.Serialize(new EntityData
-        {
-            Health = 100,
-            Level = 10,
-            Lethality = 10,
-            Strength = 100,
-            Shield = 199,
-            DodgeChance = 6,
-            Name = "penis monster"
-        });
-        
-        EntityData data2 = JsonUtil.JsonToEntityData(jsonString2);
-        Goblin goblin1 = new Goblin(data1);
-        Goblin goblin2 = new Goblin(data2);
-        
-        Weapon testWeapon = new Weapon(new ToolData
-        {
-            OnAttack = new Action<IItemOwner, BaseEntity, BaseTool>((owner, target, weapon) =>
-            {
-                target.GainEffect(new Poison(new EffectData
-                {
-                    Duration = 1000,
-                    Potency = 200
-                }, target));
-            }),
-            Name = "sword of guh"
-        });
-
-        goblin1.ReceiveItem(testWeapon);
-        goblin1.PrintInventoryItems();
-
-        goblin1.Equip(testWeapon);
-
-        
-        goblin1.GiveItem(testWeapon, goblin2);
-
-        goblin1.PrintInventoryItems();
-        goblin2.PrintInventoryItems();
-
-
-        goblin2.TickEffects();
-        
-
-    }
+class Program
+{
+    
 }

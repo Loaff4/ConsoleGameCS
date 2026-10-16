@@ -4,14 +4,13 @@ using ConsoleGame.Entities.Behaviors.Data;
 
 namespace ConsoleGame.Entities.Behaviors;
 
-public class MerchantBehavior : BaseBehavior
+public class MerchantBehavior : Behavior
 {
 
 
-    public Dictionary<BaseItem, int> Wares;
-    MerchantBehavior(MerchantData data, BaseEntity owner) : base(owner)
+    public Dictionary<Item, int> Wares;
+    public MerchantBehavior(MerchantData data, Entity owner) : base(owner)
     {
-        
         Wares = data.Wares;
         
         Owner = owner;
@@ -19,7 +18,7 @@ public class MerchantBehavior : BaseBehavior
         Owner.OnItemRemoved += RemoveWare;
     }
 
-    private void RemoveWare(BaseItem item)
+    private void RemoveWare(Item item)
     {
         Wares.Remove(item);
     }

@@ -1,4 +1,4 @@
-using ConsoleGame.Places.PointsOfInterest;
+using ConsoleGame.World.Places.PointsOfInterest;
 
 namespace ConsoleGame.Places.Data;
 

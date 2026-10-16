@@ -9,7 +9,7 @@ using ConsoleGame.Utilities;
 using ConsoleGame.Entities.Interfaces;
 namespace ConsoleGame.Entities;
 
-public abstract class BaseEntity : IItemOwner, IInteractable
+public abstract class Entity : IItemOwner, IInteractable
 {
 
     public float Level;
@@ -20,21 +20,21 @@ public abstract class BaseEntity : IItemOwner, IInteractable
     public float Strength {get; protected set;} //The base damage this entity deals with attacks
     public float Lethality; //Percent chance to deal critical damage when holding a weapon
 
-    public List<BaseEntity> Attackers {get; protected set;} = new(); //Which entity has attacked it this turn
+    public List<Entity> Attackers {get; protected set;} = new(); //Which entity has attacked it this turn
     public List<BaseEffect> CurrentEffects {get; protected set;} = new(); 
     public string Name = "nameless entity";
     public int CoinBalance {get; protected set;}= 0;
-    public BaseTool EquippedTool {get; protected set;} = BaseTool.Empty;
+    public Tool EquippedTool {get; protected set;} = Tool.Empty;
     
     public static EmptyEntity Empty {get; private set;} = new EmptyEntity();
 
-    public List<BaseItem> InventoryItems {get; set;} = new(); 
+    public List<Item> InventoryItems {get; set;} = new(); 
 
     public int InteractLevel {get; set;} = 1;
 
-    public Action<BaseItem> OnItemRemoved;
+    public Action<Item> OnItemRemoved;
 
-    public BaseEntity(EntityData data) 
+    public Entity(EntityData data) 
     {
         Level = data.Level;
         MaxHealth = MathUtil.Scale(data.Health, Level);
@@ -49,7 +49,7 @@ public abstract class BaseEntity : IItemOwner, IInteractable
 
     public bool HasEquippedTool()
     {
-        if (EquippedTool == BaseTool.Empty)
+        if (EquippedTool == Tool.Empty)
         {
             return false;
         } else
@@ -60,7 +60,7 @@ public abstract class BaseEntity : IItemOwner, IInteractable
 
 
     //Target an enemy with an attack (true attacks bypass dodging and dmg reduction)
-    public void Attack(BaseEntity targetEntity, float miscMultiplier = 1, bool trueAttack = false)
+    public void Attack(Entity targetEntity, float miscMultiplier = 1, bool trueAttack = false)
     {   
         Console.WriteLine($"{Name} is attacking {targetEntity.Name}\n");
 
@@ -104,7 +104,7 @@ public abstract class BaseEntity : IItemOwner, IInteractable
    
 
     //Calculate dodging and damage reduction
-    public virtual void OnAttacked(BaseEntity attacker, DamageData dmg, bool trueAttack) {
+    public virtual void OnAttacked(Entity attacker, DamageData dmg, bool trueAttack) {
         
 
         Attackers.Add(attacker);
@@ -176,12 +176,12 @@ public abstract class BaseEntity : IItemOwner, IInteractable
     
 
 
-    public void Equip(BaseTool tool) {
+    public void Equip(Tool tool) {
         EquippedTool = tool;
     }
     public void UnequipTool()
     {
-        EquippedTool = BaseTool.Empty;
+        EquippedTool = Tool.Empty;
     }
 
     public void GainEffect(BaseEffect effect)
@@ -203,16 +203,16 @@ public abstract class BaseEntity : IItemOwner, IInteractable
         CollectionUtil.PrintItemList(InventoryItems);
     }
     
-    public bool HasItem(BaseItem item)
+    public bool HasItem(Item item)
     {
-        if (CollectionUtil.ValueExistsInCollection<BaseItem>(item, InventoryItems))
+        if (CollectionUtil.ValueExistsInCollection<Item>(item, InventoryItems))
         {
             return true;
         }
         return false;
     }
 
-    public void RemoveItem(BaseItem item)
+    public void RemoveItem(Item item)
     {
         if (HasItem(item)) {
             if (item.Equals(EquippedTool))
@@ -224,14 +224,14 @@ public abstract class BaseEntity : IItemOwner, IInteractable
         }
     }
 
-    public void ReceiveItem(BaseItem item)
+    public void ReceiveItem(Item item)
     {
         InventoryItems.Add(item);
     }
 
 
     //Sell an item to any particular shop
-    public void SellItem(BaseItem item) {
+    public void SellItem(Item item) {
         if (HasItem(item))
         {
             RemoveItem(item);
@@ -240,7 +240,7 @@ public abstract class BaseEntity : IItemOwner, IInteractable
         
     }
 
-    public void GiveItem(BaseItem item, IItemOwner newOwner)
+    public void GiveItem(Item item, IItemOwner newOwner)
     {
         if (HasItem(item))
         {
@@ -249,7 +249,7 @@ public abstract class BaseEntity : IItemOwner, IInteractable
         } 
     }
 
-    public void OnInteract(BaseEntity interactingEntity)
+    public void OnInteract(Entity interactingEntity)
     {
         throw new NotImplementedException();
     }

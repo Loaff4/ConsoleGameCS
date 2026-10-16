@@ -5,16 +5,16 @@ using ConsoleGame.Items.Data;
 using ConsoleGame.Items.Interfaces;
 namespace ConsoleGame.Items;
 
-public abstract class BaseTool : BaseItem
+public abstract class Tool : Item
 {
 
     public float MaxDurability {get; protected set;} 
     public float CurrentDurability {get; protected set;} //How many durability points this has (I could make it deleted or just a different state idk yet)
     public float Level {get; protected set;} //How "strong" this tool is. Will determine stat multipliers
 
-    public static BaseTool Empty {get; private set;} = new EmptyTool(ToolData.Empty);
+    public static Tool Empty {get; private set;} = new EmptyTool(ToolData.Empty);
 
-    public BaseTool(ToolData data) : base (data.Value, data.Name)
+    public Tool(ToolData data) : base (data.Value, data.Name)
     {
         Level = data.Level;
         MaxDurability = data.Durability;

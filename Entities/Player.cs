@@ -2,7 +2,7 @@ using System;
 using ConsoleGame.Entities.Data;
 namespace ConsoleGame.Entities;
 
-class Player : BaseEntity
+class Player : Entity
 {
     public Player(EntityData data) : base(data)
     {

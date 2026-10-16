@@ -1,4 +1,4 @@
-namespace ConsoleGame.Places.PointsOfInterest;
+namespace ConsoleGame.World.Places.PointsOfInterest;
 
 public abstract class BasePoi
 {

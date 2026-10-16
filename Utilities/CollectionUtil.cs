@@ -17,7 +17,7 @@ public class CollectionUtil
         return false;
     }
 
-    public static void PrintItemList(List<BaseItem> itemList)
+    public static void PrintItemList(List<Item> itemList)
     {
         Console.WriteLine("--");
         if (itemList.Count == 0)
@@ -29,7 +29,7 @@ public class CollectionUtil
 
         int number = 1;
         
-        foreach(BaseItem item in itemList)
+        foreach(Item item in itemList)
         {
             Console.WriteLine($"{number}. {item.Name}");
             number++;
