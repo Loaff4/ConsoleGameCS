@@ -4,7 +4,7 @@ namespace ConsoleGame.Places.Data;
 
 public struct PlaceData
 {
-    public List<BasePoi> Pois;
+    public List<Poi> Pois;
     public string EnteringMessage;
     public string Name;
 }

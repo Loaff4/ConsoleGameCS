@@ -5,7 +5,7 @@ using ConsoleGame.Entities.Data;
 
 namespace ConsoleGame.Effects;
 
-class Rotting : BaseEffect
+class Rotting : Effect
 {
 
     Rotting(EffectData effectData, Entity owner) : base(effectData, owner)

@@ -21,7 +21,7 @@ public abstract class Entity : IItemOwner, IInteractable
     public float Lethality; //Percent chance to deal critical damage when holding a weapon
 
     public List<Entity> Attackers {get; protected set;} = new(); //Which entity has attacked it this turn
-    public List<BaseEffect> CurrentEffects {get; protected set;} = new(); 
+    public List<Effect> CurrentEffects {get; protected set;} = new(); 
     public string Name = "nameless entity";
     public int CoinBalance {get; protected set;}= 0;
     public Tool EquippedTool {get; protected set;} = Tool.Empty;
@@ -184,14 +184,14 @@ public abstract class Entity : IItemOwner, IInteractable
         EquippedTool = Tool.Empty;
     }
 
-    public void GainEffect(BaseEffect effect)
+    public void GainEffect(Effect effect)
     {
         CurrentEffects.Add(effect);
     }
 
     public void TickEffects()
     {
-        foreach (BaseEffect effect in CurrentEffects)
+        foreach (Effect effect in CurrentEffects)
         {
             effect.Tick();       
         }

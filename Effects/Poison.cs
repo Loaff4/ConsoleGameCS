@@ -5,7 +5,7 @@ using ConsoleGame.Entities.Data;
 
 namespace ConsoleGame.Effects;
 
-public class Poison : BaseEffect
+public class Poison : Effect
 {
 
     

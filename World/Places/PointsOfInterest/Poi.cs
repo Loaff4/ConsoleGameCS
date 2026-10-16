@@ -1,11 +1,11 @@
 namespace ConsoleGame.World.Places.PointsOfInterest;
 
-public abstract class BasePoi
+public abstract class Poi
 {
     
     public string Name;
 
-    public BasePoi(string name)
+    public Poi(string name)
     {
         Name = name;
     }

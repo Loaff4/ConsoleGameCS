@@ -6,7 +6,7 @@ namespace ConsoleGame.World.Places;
 
 public class Place
 {
-    public List<BasePoi> Pois;
+    public List<Poi> Pois;
 
     bool FirstTime = true;
     string EnteringMessage;

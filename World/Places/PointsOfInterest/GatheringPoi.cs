@@ -3,7 +3,7 @@ using ConsoleGame.World.Places.PointsOfInterest.Data;
 
 namespace ConsoleGame.World.Places.PointsOfInterest;
 
-class GatheringPoi : BasePoi
+class GatheringPoi : Poi
 {
     public Entity[] GatheredEntites;
     public float DangerLevel;
